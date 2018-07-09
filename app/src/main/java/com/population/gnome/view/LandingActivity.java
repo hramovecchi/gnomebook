@@ -31,7 +31,7 @@ public class LandingActivity extends Activity implements LandingView {
         setContentView(R.layout.activity_main);
         ((GnomebookApp)getApplication()).getGnomebookComponent().inject(this);
 
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        progressBar = findViewById(R.id.progress_bar);
         presenter = new LandingPresenter(this, bus);
         presenter.load();
     }
