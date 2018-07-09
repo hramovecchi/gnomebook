@@ -6,7 +6,10 @@ import android.widget.Toast;
 import com.population.gnome.event.AppErrorEvent;
 import com.population.gnome.model.GnomeModel;
 import com.population.gnome.rest.GnomeRestAdapter;
+import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
+
+import javax.inject.Inject;
 
 /**
  * Created by hramovecchi on 25/1/2018.
@@ -19,6 +22,12 @@ public class GnomebookApp extends Application {
     private GnomeModel gnomeModel;
     private GnomebookComponent gnomebookComponent;
 
+    @Inject
+    Bus bus;
+
+    @Inject
+    GnomeModel model;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -26,8 +35,10 @@ public class GnomebookApp extends Application {
 
         gnomebookComponent = DaggerGnomebookComponent.builder()
                 .gnomebookModule(new GnomebookModule()).build();
-        gnomeModel = new GnomeModel(GnomeRestAdapter.getInstance());
-        gnomeModel.getBus().register(this);
+
+        gnomebookComponent.inject(this);
+
+        bus.register(this);
     }
 
     @Subscribe

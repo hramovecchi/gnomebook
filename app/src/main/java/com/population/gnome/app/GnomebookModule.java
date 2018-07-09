@@ -1,5 +1,7 @@
 package com.population.gnome.app;
 
+import com.population.gnome.model.GnomeModel;
+import com.population.gnome.rest.GnomeRestAdapter;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
@@ -19,4 +21,8 @@ public class GnomebookModule {
     Bus provideEventBus(){
         return new Bus(ThreadEnforcer.ANY);
     }
+
+    @Singleton
+    @Provides
+    GnomeModel provideGnomeModel() {return new GnomeModel(GnomeRestAdapter.getInstance()); }
 }

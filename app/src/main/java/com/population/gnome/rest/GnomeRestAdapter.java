@@ -14,7 +14,7 @@ public class GnomeRestAdapter {
     public static GnomePopulationService getInstance(){
         if (gnomePopulationService == null){
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://raw.githubusercontent.com/rrafols/mobile_test/master/")
+                    .baseUrl("https://raw.githubusercontent.com/hramovecchi/gnomebook/master/app/src/main/res/raw/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 

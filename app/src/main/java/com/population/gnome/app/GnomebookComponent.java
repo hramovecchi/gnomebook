@@ -19,4 +19,5 @@ public interface GnomebookComponent {
     void inject(GnomeModel model);
     void inject(GnomeListActivity activity);
     void inject(GnomeDetailActivity activity);
+    void inject(GnomebookApp app);
 }

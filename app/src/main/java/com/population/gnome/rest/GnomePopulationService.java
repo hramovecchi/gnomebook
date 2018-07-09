@@ -10,6 +10,6 @@ import retrofit2.http.GET;
  */
 
 public interface GnomePopulationService {
-    @GET("data.json")
+    @GET("dummy_gnome_list.json")
     Call<GnomePopulationDTO> getGnomePopulation();
 }
