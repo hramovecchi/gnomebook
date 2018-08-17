@@ -25,6 +25,7 @@ public class GnomeDetailPresenter {
     public GnomeDetailPresenter(GnomeDetailView view){
         GnomebookApp.getApp().getGnomebookComponent().inject(this);
         this.view = view;
+        eventBus.register(this);
     }
 
     public void loadGnomeDetails(GnomeDTO gnome) {
@@ -58,15 +59,8 @@ public class GnomeDetailPresenter {
         view.setFriendList(event.getFriendsDetails());
     }
 
-    public void onDestroy(){
+    public void destroy(){
         view = null;
-    }
-
-    public void listenToEvents() {
-        eventBus.register(this);
-    }
-
-    public void dontListenToEvents() {
         eventBus.unregister(this);
     }
 }

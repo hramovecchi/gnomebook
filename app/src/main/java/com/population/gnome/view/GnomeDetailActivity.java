@@ -53,8 +53,6 @@ public class GnomeDetailActivity extends Activity implements GnomeDetailView, Ad
         friendsLabel = findViewById(R.id.friends_label);
         listView = findViewById(R.id.friends_list_view);
         listView.setOnItemClickListener(this);
-
-        presenter = new GnomeDetailPresenter(this);
     }
 
     @Override
@@ -125,22 +123,16 @@ public class GnomeDetailActivity extends Activity implements GnomeDetailView, Ad
 
     @Override
     protected void onDestroy() {
-        presenter.onDestroy();
+        presenter.destroy();
         super.onDestroy();
     }
 
     @Override
     protected void onResume() {
-        presenter.listenToEvents();
+        presenter = new GnomeDetailPresenter(this);
         GnomeDTO gnome = (GnomeDTO)getIntent().getSerializableExtra(GnomebookApp.GNOME_DETAIL_KEY);
         presenter.loadGnomeDetails(gnome);
         super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        presenter.dontListenToEvents();
-        super.onPause();
     }
 
     @Override
