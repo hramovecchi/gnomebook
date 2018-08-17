@@ -129,10 +129,10 @@ public class GnomeDetailActivity extends Activity implements GnomeDetailView, Ad
 
     @Override
     protected void onResume() {
+        super.onResume();
         presenter = new GnomeDetailPresenter(this);
         GnomeDTO gnome = (GnomeDTO)getIntent().getSerializableExtra(GnomebookApp.GNOME_DETAIL_KEY);
         presenter.loadGnomeDetails(gnome);
-        super.onResume();
     }
 
     @Override
