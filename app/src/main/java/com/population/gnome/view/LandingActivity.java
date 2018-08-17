@@ -34,7 +34,7 @@ public class LandingActivity extends Activity implements LandingView {
 
     @Override
     protected void onDestroy() {
-        presenter.onDestroy();
+        presenter.destroy();
         super.onDestroy();
     }
 

@@ -37,7 +37,7 @@ public class LandingPresenter {
         view.navigateToGnomeList();
     }
 
-    public void onDestroy(){
+    public void destroy(){
         eventBus.unregister(this);
         view = null;
     }
