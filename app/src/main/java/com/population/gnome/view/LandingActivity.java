@@ -22,17 +22,13 @@ public class LandingActivity extends Activity implements LandingView {
     private ProgressBar progressBar;
     private LandingPresenter presenter;
 
-    @Inject
-    Bus bus;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ((GnomebookApp)getApplication()).getGnomebookComponent().inject(this);
 
         progressBar = findViewById(R.id.progress_bar);
-        presenter = new LandingPresenter(this, bus);
+        presenter = new LandingPresenter(this);
         presenter.load();
     }
 

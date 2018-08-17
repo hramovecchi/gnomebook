@@ -1,5 +1,6 @@
 package com.population.gnome.presenter;
 
+import com.population.gnome.app.GnomebookApp;
 import com.population.gnome.dto.GnomeDTO;
 import com.population.gnome.event.FetchGnomeFriendsDetailsEvent;
 import com.population.gnome.event.GnomeFriendsDetailsFetched;
@@ -9,17 +10,21 @@ import com.squareup.otto.Subscribe;
 
 import java.text.DecimalFormat;
 
+import javax.inject.Inject;
+
 /**
  * Created by hramovecchi on 31/1/2018.
  */
 
 public class GnomeDetailPresenter {
     private GnomeDetailView view;
-    private Bus eventBus;
 
-    public GnomeDetailPresenter(GnomeDetailView view, Bus bus){
+    @Inject
+    Bus eventBus;
+
+    public GnomeDetailPresenter(GnomeDetailView view){
+        GnomebookApp.getApp().getGnomebookComponent().inject(this);
         this.view = view;
-        this.eventBus = bus;
     }
 
     public void loadGnomeDetails(GnomeDTO gnome) {

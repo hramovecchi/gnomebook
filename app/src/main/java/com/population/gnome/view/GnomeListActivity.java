@@ -29,21 +29,18 @@ public class GnomeListActivity extends Activity implements GnomeListView, Search
     private SearchView searchView;
     private GnomeListPresenter presenter;
     private GnomeAdapter adapter;
-    @Inject
-    Bus bus;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gnome_list);
-        ((GnomebookApp)getApplication()).getGnomebookComponent().inject(this);
 
         listView = findViewById(R.id.list_view);
         listView.setOnItemClickListener(this);
         searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(this);
 
-        presenter = new GnomeListPresenter(this, bus);
+        presenter = new GnomeListPresenter(this);
         presenter.load();
     }
 

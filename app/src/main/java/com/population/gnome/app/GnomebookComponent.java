@@ -1,6 +1,9 @@
 package com.population.gnome.app;
 
 import com.population.gnome.model.GnomeModel;
+import com.population.gnome.presenter.GnomeDetailPresenter;
+import com.population.gnome.presenter.GnomeListPresenter;
+import com.population.gnome.presenter.LandingPresenter;
 import com.population.gnome.view.GnomeDetailActivity;
 import com.population.gnome.view.GnomeListActivity;
 import com.population.gnome.view.LandingActivity;
@@ -15,9 +18,9 @@ import dagger.Component;
 @Singleton
 @Component(modules = {GnomebookModule.class})
 public interface GnomebookComponent {
-    void inject(LandingActivity activity);
     void inject(GnomeModel model);
-    void inject(GnomeListActivity activity);
-    void inject(GnomeDetailActivity activity);
     void inject(GnomebookApp app);
+    void inject(LandingPresenter presenter);
+    void inject(GnomeListPresenter presenter);
+    void inject(GnomeDetailPresenter presenter);
 }

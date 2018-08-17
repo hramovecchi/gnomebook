@@ -16,11 +16,8 @@ import com.population.gnome.app.GnomebookApp;
 import com.population.gnome.cursor.GnomeAdapter;
 import com.population.gnome.dto.GnomeDTO;
 import com.population.gnome.presenter.GnomeDetailPresenter;
-import com.squareup.otto.Bus;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 /**
  * Created by hramovecchi on 28/1/2018.
@@ -39,28 +36,25 @@ public class GnomeDetailActivity extends Activity implements GnomeDetailView, Ad
     private TextView professions;
     private TextView friendsLabel;
     private ListView listView;
-    @Inject
-    Bus bus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gnome_detail);
-        ((GnomebookApp)getApplication()).getGnomebookComponent().inject(this);
 
-        name = (TextView)findViewById(R.id.name_input);
-        profilePicture = (ImageView)findViewById(R.id.profile_pic);
-        age = (TextView)findViewById(R.id.age_input);
-        weight = (TextView)findViewById(R.id.weight_input);
-        height = (TextView)findViewById(R.id.height_input);
-        hairColor = (TextView)findViewById(R.id.hair_color_input);
-        professionsLabel = (TextView)findViewById(R.id.professions_label);
-        professions = (TextView)findViewById(R.id.professions_input);
-        friendsLabel = (TextView)findViewById(R.id.friends_label);
-        listView = (ListView)findViewById(R.id.friends_list_view);
+        name = findViewById(R.id.name_input);
+        profilePicture = findViewById(R.id.profile_pic);
+        age = findViewById(R.id.age_input);
+        weight = findViewById(R.id.weight_input);
+        height = findViewById(R.id.height_input);
+        hairColor = findViewById(R.id.hair_color_input);
+        professionsLabel = findViewById(R.id.professions_label);
+        professions = findViewById(R.id.professions_input);
+        friendsLabel = findViewById(R.id.friends_label);
+        listView = findViewById(R.id.friends_list_view);
         listView.setOnItemClickListener(this);
 
-        presenter = new GnomeDetailPresenter(this, bus);
+        presenter = new GnomeDetailPresenter(this);
     }
 
     @Override
